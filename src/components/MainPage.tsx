@@ -46,10 +46,13 @@ interface GithubUser {
  
 }
 
+
+
 type SelectedUser = GithubUser | null;
 
+
 interface MainPageProps {
-  selectedUser: SelectedUser; 
+  selectedUser: SelectedUser;
 }
 
 

@@ -5,23 +5,56 @@ import Header from './Header';
 import MainPage from './MainPage';
 import { SearchBar } from './SearchBar';
 
-interface User {
-  id: number;
+
+
+
+interface GithubUser {
   login: string;
+  id: number;
+  node_id: string;
+  avatar_url: string;
+  gravatar_id: string;
+  url: string;
   html_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  starred_url: string;
+  subscriptions_url: string;
+  organizations_url: string;
+  repos_url: string;
+  events_url: string;
+  received_events_url: string;
+  type: 'User';
+  user_view_type: 'public';
+  site_admin: boolean;
+  name: string | null;
+  company: string | null;
+  blog: string | null;
+  location: string | null;
+  email: string | null;
+  hireable: boolean | null;
+  bio: string | null;
+  twitter_username: string | null;
+  public_repos: number;
+  public_gists: number;
   followers: number;
   following: number;
-  public_repos: number;
-  location?: string;
-  twitter_username?: string;
-  blog?: string;
-  company?: string;
+  created_at: string;
+  updated_at: string;
 }
 
+
+
+
+
+
+
+
 export const GithubUsers: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]); 
-  const [filteredUsers, setFilteredUsers] = useState<User[]>([]); 
-  const [selectedUser, setSelectedUser] = useState<User | null>(null); 
+  const [users, setUsers] = useState<GithubUser[]>([]); 
+  const [filteredUsers, setFilteredUsers] = useState<GithubUser[]>([]); 
+  const [selectedUser, setSelectedUser] = useState<GithubUser |null>(null); 
   const [error, setError] = useState<string | null>(null); 
   const [isSearching, setIsSearching] = useState(false); 
   useEffect(() => {
@@ -74,8 +107,7 @@ export const GithubUsers: React.FC = () => {
     <p className="no-results-message">No results</p>
   ) : (
       <MainPage
-        users={filteredUsers}
-        onUserClick={fetchUserDetails}
+        
         selectedUser={selectedUser}
       />
   )}
@@ -83,3 +115,6 @@ export const GithubUsers: React.FC = () => {
     </div>
   );
 }
+
+
+
